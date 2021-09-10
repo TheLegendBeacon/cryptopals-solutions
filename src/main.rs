@@ -9,5 +9,5 @@ fn main() {
 fn test_set1() {
     tests::challenge1test();
     tests::challenge2test();
+    tests::challenge3test();
 }
-
