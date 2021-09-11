@@ -1,13 +1,23 @@
 use crate::sets::set1;
+use crate::sets::tochar;
+
+fn test_equal(message: &str, first: &str, second: &str) {
+    print!("{} ", message);
+    if first == second {
+        println!("\u{001b}[32;1mPASS\u{001b}[0m");
+    } else {
+        println!("\u{001b}[31;1mFAIL\u{001b}[0m")
+    }
+}
 
 pub fn challenge1test() {
     let hexencstring = String::from("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d");
-    println!("Testing Challenge 1...");
-    assert_eq!(
-        set1::hex2base64(&hexencstring),
+    test_equal(
+        "Testing Challenge 1...",
+        &set1::hex2base64(&hexencstring),
         "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t",
-        "FAIL"
     );
+
 }
 
 pub fn challenge2test() {
@@ -18,8 +28,7 @@ pub fn challenge2test() {
         &hexdecstr2.expect("Failed to get Vec."),
     );
     let hexresult = hex::encode(result);
-    println!("Testing Challenge 2...");
-    assert_eq!(hexresult, "746865206b696420646f6e277420706c6179", "FAIL");
+    test_equal("Testing Challenge 2...", &hexresult, "746865206b696420646f6e277420706c6179");
 }
 
 pub fn challenge3test() {
@@ -27,5 +36,5 @@ pub fn challenge3test() {
         &hex::decode("1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736")
             .expect("no"),
     );
-    println!("{}", crate::sets::tochar(val));
+    test_equal("Testing Challenge 3...", &tochar(val), "Cooking MC's like a pound of bacon");
 }
