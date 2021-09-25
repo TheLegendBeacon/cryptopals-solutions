@@ -7,6 +7,7 @@ fn is_printable(string: &str) -> bool {
         allowed_bytes.push(x)
     }
     allowed_bytes.push(10);
+    allowed_bytes.push(13);
 
     for item in string.as_bytes().iter() {
         if !allowed_bytes.contains(item) {
