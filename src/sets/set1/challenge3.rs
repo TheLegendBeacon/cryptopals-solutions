@@ -47,7 +47,7 @@ pub fn break_single_char_xor(buffer: &Vec<u8>) -> Vec<u8> {
     let mut total_strings: Vec<String> = Vec::new();
 
     for vector in total_vecs {
-        total_strings.push(crate::sets::tochar(vector));
+        total_strings.push(crate::sets::tochar(&vector));
     }
 
     let mut total_weights: Vec<f32> = Vec::new();
