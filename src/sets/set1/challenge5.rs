@@ -8,5 +8,5 @@ pub fn repeating_key_xor(to_encrypt: &Vec<u8>, key: &Vec<u8>) -> Vec<u8> {
         result.push(to_encrypt[number] ^ key[number % keylen]);
     }
 
-    return result
+    return result;
 }
