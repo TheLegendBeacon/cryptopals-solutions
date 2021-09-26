@@ -1,16 +1,17 @@
 use crate::sets::set1::{break_single_char_xor, get_english_score};
 use crate::sets::tochar;
 
-fn is_printable(string: &str) -> bool {
-    let mut allowed_bytes: Vec<u8> = Vec::new();
-    for x in 32..127 {
-        allowed_bytes.push(x)
+fn char_printable(a: &u8) -> bool {
+    match a {
+        32..=126 => true,
+        10 | 13 => true,
+        _ => false,
     }
-    allowed_bytes.push(10);
-    allowed_bytes.push(13);
+}
 
+fn is_printable(string: &str) -> bool {
     for item in string.as_bytes().iter() {
-        if !allowed_bytes.contains(item) {
+        if !char_printable(item) {
             return false;
         }
     }
@@ -30,7 +31,7 @@ pub fn find_single_char_xor(list_of_vecs: &[Vec<u8>]) -> Vec<u8> {
         if is_printable(&tochar(&decoded_string)) {
             weights.push(get_english_score(&tochar(&decoded_string)));
         } else {
-            weights.push(0.0);
+            weights.push(0.0)
         }
     }
 

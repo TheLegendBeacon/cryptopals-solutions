@@ -63,3 +63,11 @@ pub fn challenge4test() {
     );
     return ();
 }
+
+pub fn challenge5test() {
+    let stringbytes: Vec<u8> = format!("Burning 'em, if you ain't quick and nimble{}I go crazy when I hear a cymbal", tochar(&[10])).as_bytes().to_vec();
+    let key: Vec<u8> = "ICE".as_bytes().to_vec();
+    let xored_val: Vec<u8> = set1::repeating_key_xor(&stringbytes, &key);
+    test_equal("Testing Challenge 5...", hex::encode(xored_val) == "0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272a282b2f20430a652e2c652a3124333a653e2b2027630c692b20283165286326302e27282f")
+
+}

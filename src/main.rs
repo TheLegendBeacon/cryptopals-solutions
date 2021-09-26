@@ -11,4 +11,5 @@ fn test_set1() {
     tests::challenge2test();
     tests::challenge3test();
     tests::challenge4test();
+    tests::challenge5test();
 }
